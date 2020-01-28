@@ -179,14 +179,20 @@ def player_stats(players_name)
   
 end
 
-def find_player
+def find_player(players_name)
   found_player = {}
   game_hash.map {|place, team|
     team.each {|attribute, data|
-      data.each{|player|
-      }
+      if attribute == :players
+        data.map {|player|
+          if player[:player_name] == players_name
+            return player
+          end
+        }
+      end
     }
   }
+end
 end
 
       
